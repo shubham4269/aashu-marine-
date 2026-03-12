@@ -6,7 +6,7 @@ import { validateRequiredFields, validatePagination, sanitizeString } from '../u
  */
 export const getAllTestimonials = async (req, res, next) => {
   try {
-    const { page = 1, limit = 10, is_approved = true } = req.query;
+    const { page = 1, limit = 10, is_approved } = req.query;
     const { page: validPage, limit: validLimit, offset } = validatePagination(page, limit);
 
     // Build query based on user role
@@ -18,7 +18,7 @@ export const getAllTestimonials = async (req, res, next) => {
       query += ' WHERE is_approved = true';
     } else if (is_approved !== undefined) {
       query += ' WHERE is_approved = ?';
-      params.push(is_approved === 'true' || is_approved === true ? 1 : 0);
+      params.push(is_approved === 'true' ? 1 : 0);
     }
 
     // Get total count
@@ -84,17 +84,17 @@ export const createTestimonial = async (req, res, next) => {
     // Validate required fields
     const validation = validateRequiredFields(req.body, ['name', 'text']);
     if (!validation.valid) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: 'Validation error',
-        message: `Missing required fields: ${validation.missing.join(', ')}` 
+        message: `Missing required fields: ${validation.missing.join(', ')}`
       });
     }
 
     // Validate rating
     if (rating < 1 || rating > 5) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: 'Validation error',
-        message: 'Rating must be between 1 and 5' 
+        message: 'Rating must be between 1 and 5'
       });
     }
 

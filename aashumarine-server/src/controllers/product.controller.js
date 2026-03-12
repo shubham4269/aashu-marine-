@@ -16,7 +16,7 @@ export const getAllProducts = async (req, res, next) => {
       condition,
       manufacturer,
       search,
-      is_active = true
+      is_active 
     } = req.query;
 
     const { page: validPage, limit: validLimit, offset } = validatePagination(page, limit);
