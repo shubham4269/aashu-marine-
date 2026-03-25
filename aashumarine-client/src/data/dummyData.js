@@ -196,10 +196,11 @@ export const footerData = {
     description: 'Leading supplier of premium marine equipment, spare parts, and technical solutions for the global maritime industry. Committed to excellence and reliability since 2004.'
   },
   contact: {
-    address: 'Kumbharwada, Bhavnagar, Gujarat, India',
+    // address: 'Kumbharwada, Bhavnagar, Gujarat, India',
+    address: 'Revenue Survey No 434/1,3 Plot No 12/B Amar CO OP.HO Society Gadhechi Road, Bhavnagar-364001 Gujarat India',
     phone: '+91 8320431691',
     email1: 'aashu.marines@gmail.com',
-    email2: 'iinfo.aashumarine@gmail.com',
+    email2: 'info.aashumarine@gmail.com',
     hours: 'Mon - Sat: 9:00 AM - 6:00 PM'
   },
   quickLinks: [
