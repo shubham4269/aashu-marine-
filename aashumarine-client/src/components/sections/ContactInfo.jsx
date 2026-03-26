@@ -43,10 +43,10 @@ const ContactInfo = () => {
         </div>
         <div className="info-content">
           <address className="business-address">
-            Aashu Marine Equipment<br />
-            123 Harbor Drive<br />
-            Marine City, MC 12345<br />
-            United States
+            Revenue Survey No 434/1,3<br />
+            Plot No 12/B Amar CO OP.HO Society<br />
+            Gadhechi Road, Bhavnagar-364001<br />
+            Gujarat India
           </address>
         </div>
       </div>
@@ -73,7 +73,7 @@ const ContactInfo = () => {
               <span className="contact-label">Phone:</span>
             </div>
             <a href="tel:+15551234567" className="contact-link">
-              +1 (555) 123-4567
+              +91 8320431691
             </a>
           </div>
           <div className="contact-item">
@@ -95,7 +95,7 @@ const ContactInfo = () => {
               <span className="contact-label">Email:</span>
             </div>
             <a href="mailto:info@aashumarine.com" className="contact-link">
-              info@aashumarine.com
+              aashu.marines@gmail.com
             </a>
           </div>
           <div className="contact-item">
@@ -117,7 +117,7 @@ const ContactInfo = () => {
               <span className="contact-label">Support:</span>
             </div>
             <a href="mailto:support@aashumarine.com" className="contact-link">
-              support@aashumarine.com
+              info.aashumarine@gmail.com
             </a>
           </div>
         </div>

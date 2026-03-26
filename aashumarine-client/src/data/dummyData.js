@@ -215,6 +215,6 @@ export const footerData = {
     { platform: 'LinkedIn', url: '#', icon: linkedinIcon },
     { platform: 'Instagram', url: '#', icon: instagramIcon }
   ],
-  mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118633.6943818973!2d72.0518625245022!3d21.690956800257446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395f51bab0fac767%3A0xe21c1a9a25cfdf1a!2sKumbharwada%20bhavnagar!5e0!3m2!1sen!2sin!4v1771938651489!5m2!1sen!2sin',
+  mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29641.80091098827!2d72.1235442098189!3d21.7715468744637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395f5b1f2f6421c1%3A0x43a34be947e94042!2sGoodCap%20Digital%20Services%20Private%20limited!5e0!3m2!1sen!2sin!4v1774507630529!5m2!1sen!2sin",
   copyright: `© ${new Date().getFullYear()} Aashumarine. All rights reserved.`
 };
