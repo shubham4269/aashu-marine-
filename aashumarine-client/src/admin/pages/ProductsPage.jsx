@@ -164,7 +164,12 @@ export function ProductsPage() {
       key: 'image',
       label: 'Image',
       render: (value, row) => {
-        const imageSrc = row.imageUrl || value;
+        const imageSrc =
+          (Array.isArray(row.thumbnailUrls) && row.thumbnailUrls[0]) ||
+          (Array.isArray(row.imageUrls) && row.imageUrls[0]) ||
+          row.thumbnailUrl ||
+          row.imageUrl ||
+          value;
         const placeholderSvg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial, sans-serif' font-size='10' fill='%23999'%3ENo Image%3C/text%3E%3C/svg%3E`;
         
         return (

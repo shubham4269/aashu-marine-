@@ -56,12 +56,13 @@ export const getFullPath = (relativePath) => {
 export const getImageUrl = (imageData) => {
   if (!imageData) return null;
 
+  const baseUrl = process.env.BASE_URL || 'http://localhost:5300';
+
   // Handle array of images (new format)
   if (Array.isArray(imageData)) {
     return imageData.map(path => {
       if (!path) return null;
       const normalizedPath = path.replace(/\\/g, '/');
-      const baseUrl = process.env.BASE_URL || 'http://localhost:5000';
       const urlPath = normalizedPath.startsWith('/') ? normalizedPath : `/${normalizedPath}`;
       return `${baseUrl}${urlPath}`;
     }).filter(url => url !== null);
@@ -69,7 +70,6 @@ export const getImageUrl = (imageData) => {
 
   // Handle single image (legacy format)
   const normalizedPath = imageData.replace(/\\/g, '/');
-  const baseUrl = process.env.BASE_URL || 'http://localhost:5000';
   const urlPath = normalizedPath.startsWith('/') ? normalizedPath : `/${normalizedPath}`;
 
   return `${baseUrl}${urlPath}`;
@@ -181,12 +181,13 @@ export const generateThumbnails = async (imagePaths, size = 300) => {
 export const getVideoUrl = (videoData) => {
   if (!videoData) return null;
 
+  const baseUrl = process.env.BASE_URL || 'http://localhost:5300';
+
   // Handle array of videos
   if (Array.isArray(videoData)) {
     return videoData.map(path => {
       if (!path) return null;
       const normalizedPath = path.replace(/\\/g, '/');
-      const baseUrl = process.env.BASE_URL || 'http://localhost:5000';
       const urlPath = normalizedPath.startsWith('/') ? normalizedPath : `/${normalizedPath}`;
       return `${baseUrl}${urlPath}`;
     }).filter(url => url !== null);
@@ -194,7 +195,6 @@ export const getVideoUrl = (videoData) => {
 
   // Handle single video
   const normalizedPath = videoData.replace(/\\/g, '/');
-  const baseUrl = process.env.BASE_URL || 'http://localhost:5000';
   const urlPath = normalizedPath.startsWith('/') ? normalizedPath : `/${normalizedPath}`;
 
   return `${baseUrl}${urlPath}`;
