@@ -81,26 +81,18 @@ export function ProductForm({ initialData = null, onSubmit, onCancel }) {
         stock_quantity: initialData.stock_quantity !== undefined ? initialData.stock_quantity : '',
       });
 
-      // Set existing images for edit mode
-      if (initialData.images && Array.isArray(initialData.images)) {
-        // Backend returns array of image paths
-        const imageUrls = initialData.images.map(img =>
-          img.startsWith('http') ? img : `http://localhost:5000/${img}`
-        );
-        setExistingImages(imageUrls);
-      } else if (initialData.image || initialData.imageUrl) {
-        // Backward compatibility: single image as string
-        const imageUrl = initialData.imageUrl || initialData.image;
-        const fullUrl = imageUrl.startsWith('http') ? imageUrl : `http://localhost:5000/${imageUrl}`;
-        setExistingImages([fullUrl]);
+      // Set existing images for edit mode - prefer resolved URLs from backend
+      if (initialData.imageUrls && Array.isArray(initialData.imageUrls) && initialData.imageUrls.length > 0) {
+        setExistingImages(initialData.imageUrls);
+      } else if (initialData.thumbnailUrls && Array.isArray(initialData.thumbnailUrls) && initialData.thumbnailUrls.length > 0) {
+        setExistingImages(initialData.thumbnailUrls);
+      } else if (initialData.imageUrl) {
+        setExistingImages([initialData.imageUrl]);
       }
 
-      // Set existing videos for edit mode
-      if (initialData.videos && Array.isArray(initialData.videos)) {
-        const videoUrls = initialData.videos.map(vid =>
-          vid.startsWith('http') ? vid : `http://localhost:5000/${vid}`
-        );
-        setExistingVideos(videoUrls);
+      // Set existing videos for edit mode - prefer resolved URLs from backend
+      if (initialData.videoUrls && Array.isArray(initialData.videoUrls) && initialData.videoUrls.length > 0) {
+        setExistingVideos(initialData.videoUrls);
       }
     }
   }, [initialData]);

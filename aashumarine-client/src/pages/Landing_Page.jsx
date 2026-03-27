@@ -182,8 +182,7 @@ const Landing_Page = () => {
                     style={{ cursor: 'pointer' }}
                   >
                     <Product_Card
-                      image={product.image}
-                      imageUrl={product.imageUrl}
+                      imageUrl={product.thumbnailUrl || product.imageUrl}
                       name={product.product_name}
                       engineType={product.category}
                       manufacturer={product.manufacturer}

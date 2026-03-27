@@ -82,8 +82,7 @@ const RelatedProducts = ({ productId, onProductClick }) => {
             >
               {/* Simplified Product_Card with only name, engine type, and manufacturer (Requirement 8.4) */}
               <Product_Card
-                image={product.image}
-                imageUrl={product.imageUrl || product.imageUrls?.[0]}
+                imageUrl={product.thumbnailUrl || product.thumbnailUrls?.[0] || product.imageUrl || product.imageUrls?.[0]}
                 name={product.product_name}
                 engineType={product.category}
                 manufacturer={product.manufacturer}

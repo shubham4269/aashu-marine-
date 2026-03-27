@@ -158,8 +158,7 @@ const Products_Page = () => {
                         aria-label={`View details for ${product.product_name}`}
                       >
                         <Product_Card
-                          image={product.image}
-                          imageUrl={product.imageUrl}
+                          imageUrl={product.thumbnailUrl || product.imageUrl}
                           name={product.product_name}
                           engineType={product.category}
                           manufacturer={product.manufacturer}

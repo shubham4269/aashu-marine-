@@ -300,13 +300,22 @@ export const updateProduct = async (req, res, next) => {
     // Parse media removal arrays from FormData
     let imagesToRemove = [];
     let videosToRemove = [];
+
+    // Helper to strip base URL and normalize to relative path
+    const baseUrl = process.env.BASE_URL || 'http://localhost:5000';
+    const toRelativePath = (url) => {
+      if (!url) return url;
+      if (url.startsWith(baseUrl)) {
+        return url.slice(baseUrl.length).replace(/^\//, '');
+      }
+      // Strip any http(s)://host:port prefix
+      return url.replace(/^https?:\/\/[^/]+\//, '');
+    };
     
     if (updates.imagesToRemove) {
       try {
-        imagesToRemove = JSON.parse(updates.imagesToRemove);
-        if (!Array.isArray(imagesToRemove)) {
-          imagesToRemove = [];
-        }
+        const parsed = JSON.parse(updates.imagesToRemove);
+        imagesToRemove = Array.isArray(parsed) ? parsed.map(toRelativePath) : [];
       } catch (e) {
         console.warn('Failed to parse imagesToRemove:', e);
         imagesToRemove = [];
@@ -315,10 +324,8 @@ export const updateProduct = async (req, res, next) => {
     
     if (updates.videosToRemove) {
       try {
-        videosToRemove = JSON.parse(updates.videosToRemove);
-        if (!Array.isArray(videosToRemove)) {
-          videosToRemove = [];
-        }
+        const parsed = JSON.parse(updates.videosToRemove);
+        videosToRemove = Array.isArray(parsed) ? parsed.map(toRelativePath) : [];
       } catch (e) {
         console.warn('Failed to parse videosToRemove:', e);
         videosToRemove = [];
